@@ -1,32 +1,52 @@
 #include <iostream>
 using namespace std;
 
-struct registro{
-    f
-    //usuario, contraseña, email, numero telf,
+struct direccion {
+    string departamento;
+    string provincia;
+    string distrito;
+    string via;
+    int manzana;
+    string lote;
+    string piso; // opcional
+    int cod_postal;
 };
 
-struct cliente{
-    f
-    //usuario o email, contraseña.
+struct tarjeta {
+    int num;
+    int CVV;
 };
 
-struct proveedor{
-    //usuario o email, contraseña.
+struct registro {
+    string nombre;
+    string usuario;
+    string contrasena;
+    string email;
+    string telefono;
+    direccion dir;
+    tarjeta tarj;
 };
 
-struct direc{
-    f
-    //departament, prov, distrito, mz,lt, piso(opcional)
+struct trabajador { //repartidor, admin
+    string nombre;
+    string usuario;
+    string contrasena;
+    string email;
+    string telefono;
 };
 
-struct pago{
-    float
-    //pago_efectivo, yape, cupón descuento, tarjeta debito y crédito.
-};
-
-struct producto{
+struct producto {
+    int id;
+    string nom;
+    string descripcion;
+    string categoria;
     float precio;
+    int stock;
     int cantidad;
-    //agregar mas elementos
+};
+
+struct comentario {
+    string usuario;
+    string titulo;
+    string mensaje;
 };
