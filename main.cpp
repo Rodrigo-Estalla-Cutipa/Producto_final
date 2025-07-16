@@ -55,7 +55,8 @@ int verificaUser(registro &, registro &, string, string);
 int verificaEmp(trabajador &, trabajador &, string, string);
 
 int main() {
-    int op=-1, aux, aux2, nu=0, ne=0, ingreso, np=0;
+    int op=-1, aux, aux2, nu=0, ne=0, ingreso, np=0, nc = 0;
+    comentario, listaComentarios[100];
     registro user, listaUser[100];
     trabajador emp, listaEmp[100];
     producto, listaProd[100];
@@ -101,6 +102,7 @@ int main() {
                             cout << "GESTIÓN DE PRODUCTOS--------"<< endl;
                             cout << "1. Registrar producto" << endl;
                             cout << "2. Listar productos" << endl;
+                            cout << "3. Dejar comentario o queja" << endl;
                             cout << "0. Volver al menú principal" << endl;
                             cout << "----------------------------------" << endl;
                             cout << "Elige una opcion: "; cin >> aux;
@@ -138,6 +140,17 @@ int main() {
                                     system("pause");
                                     break;
 
+                                case 3:
+                                    cin.ignore(); // limpiar buffer
+                                    cout << "=====DEJAR COMENTARIO O QUEJA====="<< endl;
+                                    listaComentarios[nc].usuario = user.usuario;
+                                    cout << "Título del comentario: "; getline(cin, listaComentarios[nc].titulo);
+                                    cout << "Mensaje: "; getline(cin, listaComentarios[nc].mensaje);
+                                    cout << "Comentario guardado correctamente."<< endl;
+                                    nc++;
+                                    system("pause");
+                                    break;
+
                                 case 0:
                                     break;
 
@@ -171,6 +184,20 @@ int main() {
                         }
                         if (ingreso==1){
                             cout << "\nINGRESASTE trabajador\n";
+                            system("pause");
+                            system("cls");
+                            cout << "COMENTARIOS / QUEJAS REGISTRADAS"<< endl;
+                            if (nc == 0) {
+                                cout << "No hay comentarios registrados."<< endl;
+                            } else {
+                                for (int i = 0; i < nc; i++) {
+                                    cout << "------------------------------------"<< endl;
+                                    cout << "Usuario: " << listaComentarios[i].usuario << endl;
+                                    cout << "Título: " << listaComentarios[i].titulo << endl;
+                                    cout << "Mensaje: " << listaComentarios[i].mensaje << endl;
+                                    cout << "------------------------------------"<< endl;
+                                }
+                            }
                             system("pause");
                         } else {
                             cout << "\nInformacion Incorrecta\n" << endl;
