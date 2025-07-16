@@ -101,63 +101,11 @@ int main() {
                 cout << "Elige una opcion: "; cin >> aux2;
                 system("cls");
                 if (aux2== 1){
-                    cout <<"Ingrese correctamente los datos:"<<"\n\n";
-                    cin.ignore();
-                    cout << "Nombres Completo: "; getline(cin, user.nombre);
-                    cout << "Nombre Usuario: "; cin >> user.usuario;
-                    cout << "Ingrese su email: "; cin >> user.email;
-                    cin.ignore();
-                    cout << "Ingrese su telefono: "; getline(cin, user.telefono);
-                    cout << "Ingrese su nueva clave: "; cin >> user.contrasena;
-                    cout << "\nINGRESE SU DIRECCION:\n";
-                    cin.ignore();
-                    cout << "Departamento: "; getline(cin, user.dir.departamento);
-                    cout << "Provincia: "; getline(cin, user.dir.provincia);
-                    cout << "Distrito: "; getline(cin, user.dir.distrito);
-                    cout << "Via (Asoc/Calle): "; getline(cin, user.dir.via);
-                    cout << "Manzana: "; cin >> user.dir.manzana;
-                    cout << "Lote: "; cin >> user.dir.lote;
-                    cin.ignore();
-                    cout << "Piso(Opcional): "; getline(cin, user.dir.piso);
-                    cout << "Codigo Postal: "; cin >> user.dir.cod_postal;
-                    cout << "\nRegistrandose.........\n";
-                    system("pause");
-                    listaUser[nu] = user;
-                    nu++;
+                    leerUser(listaUser[nu], nu);
                     op=-1;
                 }
                 if (aux2== 2){
-                    do {
-                        system("cls");
-                        cout << "Ingresar Codigo de Acceso: "; cin >> aux;
-                        system("cls");
-                        if (aux !=912){
-                            cout << "CODIGO INVALIDO"<<endl;
-                            cout << "1. Intentar de nuevo"<<endl;
-                            cout << "0. Regresar"<<endl;
-                            cout << "----------------------------------" << endl;
-                            cout << "Elige una opcion: "; cin >> aux;
-                        }
-                    } while (aux != 912 && aux !=0);
-                    system("cls");
-                    if (aux==0){
-                        op = 2;
-                    } else {
-                        cout << "CODIGO CORRECTO\n";
-                        cout <<"Ingrese correctamente los datos:"<<"\n\n";
-                        cin.ignore();
-                        cout << "Nombres Completo: "; getline(cin, emp.nombre);
-                        cout << "Nombre Usuario: "; cin >> emp.usuario;
-                        cout << "Ingrese su email: "; cin >> emp.email;
-                        cin.ignore();
-                        cout << "Ingrese su telefono: "; getline(cin, emp.telefono);
-                        cout << "Ingrese su nueva clave: "; cin >> emp.contrasena;
-                        cout << "\nRegistrandose.........\n";
-                        system("pause");
-                        listaEmp[ne] = emp;
-                        ne++;
-                        op=-1;
-                    }
+                    leerEmp(listaEmp[ne], ne, op);
                 }
                 if (aux2== 0){
                     op=-1;
@@ -172,6 +120,7 @@ int main() {
                 break;
             default:
                 cout << "OPCION NO VALIDA" << endl;
+                op = -1;
                 system("pause");
                 break;
         }

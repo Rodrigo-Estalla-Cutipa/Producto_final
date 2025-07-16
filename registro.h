@@ -31,4 +31,7 @@ struct trabajador { //repartidor, admin
 int verificaUser(registro &, string, string);
 int verificaEmp(trabajador &, string, string);
 
+void leerUser(registro &, int &);
+void leerEmp(trabajador &, int &, int &);
+
 #endif
