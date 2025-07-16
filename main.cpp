@@ -48,7 +48,8 @@ int main() {
                             }
                         }
                         if (ingreso==1){
-                            cout << "\nINGRESASTE consumidor\n";
+                            system("cls");
+                            cout << "MENU de INICIO\n\n";
                             menu_u(listaUser[p], op);
                         } else {
                             cout << "\nInformacion Incorrecta\n" << endl;
@@ -75,10 +76,11 @@ int main() {
                             }
                         }
                         if (ingreso==1){
-                            cout << "\nINGRESASTE trabajador\n";
+                            system("cls");
+                            cout << "MENU DE TRABAJADOR:\n\n";
                             menu_e(listaEmp[p], op);
                         } else {
-                            cout << "\nInformacion Incorrecta\n" << endl;
+                            cout << "\nInformacion Incorrecta\n\n" << endl;
                             cout << "1. Intentar de nuevo" << endl;
                             cout << "0. Regresar" << endl;
                             cout << "----------------------------------" << endl;

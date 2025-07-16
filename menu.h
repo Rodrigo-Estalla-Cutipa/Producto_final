@@ -2,7 +2,7 @@
 #define MENU_H
 
 #include "registro.h"
-#include <iostream>;
+#include <iostream>
 using namespace std;
 
 void menu_u(registro &, int &);

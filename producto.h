@@ -10,8 +10,11 @@ struct producto {
     string descripcion;
     string categoria;
     float precio;
-    int stock;
     int cantidad;
+};
+
+struct pedir {
+    producto obj[100];
 };
 
 #endif
