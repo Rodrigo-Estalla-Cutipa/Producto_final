@@ -1,58 +1,9 @@
 #include <iostream>
+#include "registro.h"
+#include "direccion.h"
+#include "producto.h"
+#include "servicio.h"
 using namespace std;
-
-struct direccion {
-    string departamento;
-    string provincia;
-    string distrito;
-    string via;
-    int manzana;
-    int lote;
-    string piso; // opcional
-    int cod_postal;
-};
-
-struct tarjeta {
-    int num;
-    int CVV;
-};
-
-struct registro {
-    string nombre;
-    string usuario;
-    string contrasena;
-    string email;
-    string telefono;
-    direccion dir;
-    tarjeta tarj;
-};
-
-struct trabajador { //repartidor, admin
-    string nombre;
-    string usuario;
-    string contrasena;
-    string email;
-    string telefono;
-};
-
-struct producto {
-    int id;
-    string nom;
-    string descripcion;
-    string categoria;
-    float precio;
-    int stock;
-    int cantidad;
-};
-
-struct comentario {
-    string usuario;
-    string titulo;
-    string mensaje;
-};
-
-int verificaUser(registro &, registro &, string, string);
-int verificaEmp(trabajador &, trabajador &, string, string);
 
 int main() {
     int op=-1, aux, aux2, nu=0, ne=0, ingreso;
@@ -90,7 +41,7 @@ int main() {
                         cout << "Usuario: "; cin >> user.usuario;
                         cout << "Clave: "; cin >> user.contrasena;
                         for (int i=0; i<nu; i++){
-                            if (verificaUser(user, listaUser[i], user.usuario, user.contrasena)) {
+                            if (verificaUser(listaUser[i], user.usuario, user.contrasena)) {
                                 ingreso = 1;
                             }
                         }
@@ -116,7 +67,7 @@ int main() {
                         cout << "Usuario: "; cin >> emp.usuario;
                         cout << "Clave: "; cin >> emp.contrasena;
                         for (int i=0; i<ne; i++){
-                            if (verificaEmp(emp, listaEmp[i], emp.usuario, emp.contrasena)) {
+                            if (verificaEmp(listaEmp[i], emp.usuario, emp.contrasena)) {
                                 ingreso = 1;
                             }
                         }
@@ -168,7 +119,7 @@ int main() {
                     cout << "Lote: "; cin >> user.dir.lote;
                     cin.ignore();
                     cout << "Piso(Opcional): "; getline(cin, user.dir.piso);
-                    cout << "Codigo Postal "; cin >> user.dir.cod_postal;
+                    cout << "Codigo Postal: "; cin >> user.dir.cod_postal;
                     cout << "\nRegistrandose.........\n";
                     system("pause");
                     listaUser[nu] = user;
@@ -241,19 +192,4 @@ int main() {
     cout<<"Numero: "<<listaEmp[0].telefono<<endl;
 
     return 0;
-}
-
-int verificaUser(registro &u, registro &lista, string user, string c){
-    int aux = 0;
-    if (lista.usuario == user && lista.contrasena == c) {
-        aux = 1;
-    }
-    return aux;
-}
-int verificaEmp(trabajador &e, trabajador &lista, string user, string c){
-    int aux = 0;
-    if (lista.usuario == user && lista.contrasena == c) {
-        aux = 1;
-    }
-    return aux;
 }
