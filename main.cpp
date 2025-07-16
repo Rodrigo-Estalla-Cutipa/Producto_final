@@ -55,9 +55,10 @@ int verificaUser(registro &, registro &, string, string);
 int verificaEmp(trabajador &, trabajador &, string, string);
 
 int main() {
-    int op=-1, aux, aux2, nu=0, ne=0, ingreso;
+    int op=-1, aux, aux2, nu=0, ne=0, ingreso, np=0;
     registro user, listaUser[100];
     trabajador emp, listaEmp[100];
+    producto, listaProd[100];
     char salir;
 
     do {
@@ -95,8 +96,56 @@ int main() {
                             }
                         }
                         if (ingreso==1){
-                            cout << "\nINGRESASTE consumidor\n";
-                            system("pause");
+                            cout << "========INGRESASTE consumidor========"<< endl;
+                            system("cls");
+                            cout << "GESTIÓN DE PRODUCTOS--------"<< endl;
+                            cout << "1. Registrar producto" << endl;
+                            cout << "2. Listar productos" << endl;
+                            cout << "0. Volver al menú principal" << endl;
+                            cout << "----------------------------------" << endl;
+                            cout << "Elige una opcion: "; cin >> aux;
+
+                            switch (aux) {
+                                case 1:
+                                    cin.ignore();
+                                    cout << "\nREGISTRO DE PRODUCTO\n";
+                                    cout << "ID: "; cin >> listaProd[np].id;
+                                    cin.ignore();
+                                    cout << "Nombre: "; getline(cin, listaProd[np].nom);
+                                    cout << "Descripción: "; getline(cin, listaProd[np].descripcion);
+                                    cout << "Categoría: "; getline(cin, listaProd[np].categoria);
+                                    cout << "Precio: S/ "; cin >> listaProd[np].precio;
+                                    cout << "Stock: "; cin >> listaProd[np].stock;
+                                    cout << "Cantidad inicial (vendida o seleccionada): "; cin >> listaProd[np].cantidad;
+                                    np++;
+                                    cout << "Producto registrado exitosamente.\n";
+                                    system("pause");
+                                    break;
+
+                                case 2:
+                                    cout << "------LISTADO DE PRODUCTOS------" << endl;
+                                    for (int i = 0; i < np; i++) {
+                                        cout << "Producto " << (i+1) << ":\n";
+                                        cout << "ID: " << listaProd[i].id << endl;
+                                        cout << "Nombre: " << listaProd[i].nom << endl;
+                                        cout << "Descripción: " << listaProd[i].descripcion << endl;
+                                        cout << "Categoría: " << listaProd[i].categoria << endl;
+                                        cout << "Precio: S/ " << listaProd[i].precio << endl;
+                                        cout << "Stock: " << listaProd[i].stock << endl;
+                                        cout << "Cantidad: " << listaProd[i].cantidad << endl;
+                                        cout << "-----------------------------" << endl;
+                                    }
+                                    system("pause");
+                                    break;
+
+                                case 0:
+                                    break;
+
+                                default:
+                                    cout << "Opción inválida"<< endl;
+                                    system("pause");
+                                    break;
+                            }
                         } else {
                             cout << "\nInformacion Incorrecta\n" << endl;
                             cout << "1. Intentar de nuevo" << endl;
