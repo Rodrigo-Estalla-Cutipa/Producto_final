@@ -2,11 +2,12 @@
 #include "registro.h"
 #include "direccion.h"
 #include "producto.h"
+#include "menu.h"
 #include "servicio.h"
 using namespace std;
 
 int main() {
-    int op=-1, aux, aux2, nu=0, ne=0, ingreso;
+    int op=-1, aux, aux2, nu=0, ne=0, ingreso, p;
     registro user, listaUser[100];
     trabajador emp, listaEmp[100];
     char salir;
@@ -43,11 +44,12 @@ int main() {
                         for (int i=0; i<nu; i++){
                             if (verificaUser(listaUser[i], user.usuario, user.contrasena)) {
                                 ingreso = 1;
+                                p = i;
                             }
                         }
                         if (ingreso==1){
                             cout << "\nINGRESASTE consumidor\n";
-                            system("pause");
+                            menu_u(listaUser[p], op);
                         } else {
                             cout << "\nInformacion Incorrecta\n" << endl;
                             cout << "1. Intentar de nuevo" << endl;
@@ -69,11 +71,12 @@ int main() {
                         for (int i=0; i<ne; i++){
                             if (verificaEmp(listaEmp[i], emp.usuario, emp.contrasena)) {
                                 ingreso = 1;
+                                p = i;
                             }
                         }
                         if (ingreso==1){
                             cout << "\nINGRESASTE trabajador\n";
-                            system("pause");
+                            menu_e(listaEmp[p], op);
                         } else {
                             cout << "\nInformacion Incorrecta\n" << endl;
                             cout << "1. Intentar de nuevo" << endl;
