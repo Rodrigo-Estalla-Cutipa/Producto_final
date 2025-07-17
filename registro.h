@@ -5,11 +5,6 @@
 #include <iostream>
 using namespace std;
 
-struct tarjeta {
-    int num;
-    int CVV;
-};
-
 struct registro {
     string nombre;
     string usuario;
@@ -17,7 +12,7 @@ struct registro {
     string email;
     string telefono;
     direccion dir;
-    tarjeta tarj;
+    float dinero;
 };
 
 struct trabajador { //repartidor, admin

@@ -15,6 +15,9 @@ struct producto {
 
 struct pedir {
     producto obj[100];
+    string nombre;
+    string telefono;
+    direccion destino;
 };
 
 #endif

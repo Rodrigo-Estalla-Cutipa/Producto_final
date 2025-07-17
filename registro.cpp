@@ -40,6 +40,7 @@ void leerUser(registro &listaUser, int &nu){
     cout << "Piso(Opcional): "; getline(cin, user.dir.piso);
     cout << "Codigo Postal: "; cin >> user.dir.cod_postal;
     cout << "\nRegistrandose.........\n";
+    user.dinero = 0;
     system("pause");
     listaUser = user;
     nu++;
