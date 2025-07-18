@@ -1,15 +1,9 @@
-#ifndef SERVICIO_H
-#define SERVICIO_H
+#include "servicio.h"
 #include <string>
 #include <iostream>
 using namespace std;
 
-struct comentario {
-    string usuario;
-    string titulo;
-    string mensaje;
-};
-int main(){
+void coment(){
     int nc=0, opcion;
     comentario listaComentarios[100];
     cout<<"-----------Servicio de comentarios---------"<<endl;
@@ -18,9 +12,9 @@ int main(){
     cout<<"2. No"<<endl;
     cin>>opcion;
     if(opcion==1){
-        cout<<"Ingrese su nombre de usuario:";cin>>listaComentarios[nc].usuario<<endl;
-        cout<<"Ingrese el titulo de su comentario:";cin>>listaComentarios[nc].titulo<<endl;
-        cout<<"Ingrese su mensaje:";cin>>listaComentarios[nc].mensaje<<endl;
+        cout<<"Ingrese su nombre de usuario:";cin>>listaComentarios[nc].usuario;
+        cout<<"Ingrese el titulo de su comentario:";cin>>listaComentarios[nc].titulo;
+        cout<<"Ingrese su mensaje:";cin>>listaComentarios[nc].mensaje;
         nc++;
         cout<<"Comentario guardado con éxito."<<endl;
     }
@@ -31,4 +25,3 @@ int main(){
         cout<<"Opción no válida."<<endl;
     }
 }
-#endif

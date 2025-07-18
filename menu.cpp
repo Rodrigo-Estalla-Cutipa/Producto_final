@@ -16,6 +16,7 @@ void menu_u(registro &User, int &op){
         system("cls");
         cout << "1. Pedir Pedido" << endl;
         cout << "2. Actualizar Datos" << endl;
+        cout << "3. Dejar Comentario" << endl;
         cout << "0. Cerrar Sesion" << endl;
         cout << "----------------------------------" << endl;
         cout << "Elige una opcion: "; cin >> aux;
@@ -43,6 +44,10 @@ void menu_u(registro &User, int &op){
                 cout<<"Que desea modificar?????(nro): "; cin>>aux;
                 modific(User, aux);
                 aux =-1;
+                break;
+            case 3:
+                void coment();
+                aux=-1;
                 break;
             case 0:
                 op = 1;

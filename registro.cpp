@@ -27,7 +27,7 @@ void leerUser(registro &listaUser, int &nu){
     cout << "Ingrese su email: "; cin >> user.email;
     cin.ignore();
     cout << "Ingrese su telefono: "; getline(cin, user.telefono);
-    cout << "Ingrese su nueva clave: "; cin >> user.contrasena;
+    cout << "Cree su clave: "; cin >> user.contrasena;
     cout << "\nINGRESE SU DIRECCION:\n";
     cin.ignore();
     cout << "Departamento: "; getline(cin, user.dir.departamento);

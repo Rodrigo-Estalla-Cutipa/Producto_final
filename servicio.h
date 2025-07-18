@@ -10,4 +10,6 @@ struct comentario {
     string mensaje;
 };
 
+void coment();
+
 #endif
