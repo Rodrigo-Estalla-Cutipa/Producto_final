@@ -6,10 +6,9 @@
 using namespace std;
 
 struct producto {
-    int id;
+    string id;
     string nom;
     string descripcion;
-    string categoria;
     float precio;
     int cantidad;
 };

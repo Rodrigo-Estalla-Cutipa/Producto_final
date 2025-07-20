@@ -2,6 +2,7 @@
 #define SERVICIO_H
 
 #include <iostream>
+#include "registro.h"
 using namespace std;
 
 struct comentario {
@@ -10,6 +11,10 @@ struct comentario {
     string mensaje;
 };
 
-void coment();
+extern comentario listaComentarios[100];
+extern int nc;
+
+void coment(registro &);
+void verComentarios();
 
 #endif

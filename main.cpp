@@ -96,6 +96,10 @@ int main() {
                 if (aux2== 0){
                     op=-1;
                 }
+                if (aux2!=1 && aux2!=2 && aux2!=0){
+                    cout << "OPCION NO VALIDA" << endl;
+                    system("pause");
+                }
                 aux=-1;
                 break;
             case 2:
@@ -106,6 +110,10 @@ int main() {
                 cout << "0. Regresar" << endl;
                 cout << "----------------------------------" << endl;
                 cout << "Elige una opcion: "; cin >> aux2;
+                if (aux2!=1 && aux2!=2 && aux2!=0){
+                    cout << "\nOPCION NO VALIDA" << endl;
+                    system("pause");
+                }
                 system("cls");
                 if (aux2== 1){
                     leerUser(listaUser[nu], nu);

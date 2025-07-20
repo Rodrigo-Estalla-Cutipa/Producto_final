@@ -18,19 +18,24 @@ void menu_u(registro &User, int &op){
 
         switch (aux) {
             case 1:
-                system("cls");
-                cout << "Opciones--------"<< endl;
-                cout << "1. Pasar pedido" << endl;
-                cout << "2. Tu Saldo" << endl;
-                cout << "0. Regresar" << endl;
-                cout << "----------------------------------" << endl;
-                cout << "Elige una opcion: "; cin >> aux;
-                ppedidos(User, aux);
+                do {
+                    system("cls");
+                    cout << "Opciones--------"<< endl;
+                    cout << "1. Pasar pedido" << endl;
+                    cout << "2. Tu Saldo" << endl;
+                    cout << "0. Regresar" << endl;
+                    cout << "----------------------------------" << endl;
+                    cout << "Elige una opcion: "; cin >> aux;
+                    ppedidos(User, aux);
+                    if (aux==0){
+                        aux=-1;
+                    }
+                } while(aux!=-1);
                 break;
             case 2:
                 do {
                     system("cls");
-                    cout<<"TUS DATOS DE USUARIO:----------------------------------\n\n";
+                    cout<<"TUS DATOS DE USUARIO:\n\n";
                     cout<<"1.Nombre"<<endl;
                     cout<<"2.Usuario"<<endl;
                     cout<<"3.Contrasena"<<endl;
@@ -44,7 +49,7 @@ void menu_u(registro &User, int &op){
                 aux =-1;
                 break;
             case 3:
-                void coment();
+                coment(User);
                 aux=-1;
                 break;
             case 0:
@@ -55,42 +60,51 @@ void menu_u(registro &User, int &op){
 }
 
 void ppedidos(registro &User, int aux){
-    int num=-1;
-    float recarga=0, gasto=0;
+    string cod="/";
+    float recarga=0;
     int op=-1;
-    int r=0, v=0;
+    int r=0, v=1;
     system("cls");
     switch (aux){
         case 1:
-            if (numProductos=0){
-                cout << "NO HAY PRODUCTOS DISPONIBLES";
+            if (numProductos==0){
+                cout << "NO HAY PRODUCTOS DISPONIBLES EN ESTE MOMENTO\n";
+                system("pause");
                 break;
             }
             cout<<"PRODUCTOS A LA VENTA\n\n";
             for(int i=0; i<numProductos; i++){
                 cout << "Producto #" << i+1<<endl;
-                cout << "\t"<<item[i].nom << endl;
-                cout << "\t"<<item[i].descripcion << endl;
-                cout << "\t"<<item[i].precio << endl;
+                cout << "\tArticulo: "<<item[i].nom << endl;
+                cout << "\tDescripcion: "<<item[i].descripcion << endl;
+                cout << "\tPrecio(c/u): "<<item[i].precio << endl;
                 cout << "Codigo ID: " << item[i].id << "\n";
                 cout << "------------------------------------------------------------------\n";
             }
-            cout << "INGRESE '0' cuando desee finalizar el pedido\n";
+            cout << "\nINGRESE '0' cuando desee finalizar el pedido\n\n";
             do {
-                if (num==0){
+                if (cod=="0"){
                     op = 0;
                 } else {
-                    r=0;
-                    do {
-                        cout << "Ingrese su Item #"<<v++<<" (Ingresar ID): "; cin >> num;
+                    do {       
+                        r=0;
+                        cout << "Ingrese su Item #"<<v<<" (Ingresar ID): "; cin >> cod;
                         for(int i=0; i<numProductos; i++){
-                            if (num==item[i].id){
+                            if (cod==item[i].id){
                                 pedido[numPedidos].obj[i] = item[i];
-                                User.dinero = User.dinero - item[i].precio;
+                                cout << "\tIngrese la cantidad: "; cin >> pedido[numPedidos].obj[i].cantidad;
+                                User.dinero = User.dinero - (pedido[numPedidos].obj[i].cantidad * item[i].precio);
                                 r=1;
+                                v=v+1;
                             }
                         }
-                    } while (num !=0);
+                        if (cod=="0"){
+                            r=1;
+                        }
+                        if (r==0){
+                            cout << "\nID no valido\n\n";
+                        }
+                    } while (cod !="0");
                     if (r==1){
                         pedido[numPedidos].nombre = User.nombre;
                         pedido[numPedidos].telefono = User.telefono;
@@ -103,8 +117,8 @@ void ppedidos(registro &User, int aux){
                         pedido[numPedidos].destino.piso = User.dir.piso;
                         pedido[numPedidos].destino.cod_postal = User.dir.cod_postal;
                         numPedidos++;
-                    } else {
-                        cout << "\nID no valido\n\n";
+                        cout << "\nSu pedido ha sido registrado correctamente\n";
+                        system("pause");
                     }
                 }
             } while(op!=0);
@@ -119,7 +133,7 @@ void ppedidos(registro &User, int aux){
                 cout <<"Sin deudas\n";
             }
             cout <<"Saldo Actual: "<<User.dinero<<"\n";
-            cout <<"Añadir Saldo: "; cin >> recarga;
+            cout <<"Agregar Saldo: "; cin >> recarga;
             User.dinero = User.dinero + recarga;
             break;
         case 0:
@@ -133,11 +147,12 @@ void menu_e(trabajador &Emp, int &op) {
 
     do {
         system("cls");
-        cout << "Selecciona como ingresar: " << endl;
+        cout << "SELECCIONA como ingresar: " << endl;
         cout << "1. Repartidor\n";
         cout << "2. Administrador\n";
-        cout << "0. Cerrar Sesion\n ";
-        cin >> tipoTrab;
+        cout << "0. Cerrar Sesion\n";
+        cout << "-----------------------------" << endl;
+        cout << "Elige una opcion: "; cin >> tipoTrab;
 
         switch (tipoTrab) {
             case 1:
@@ -147,20 +162,22 @@ void menu_e(trabajador &Emp, int &op) {
             case 2: {
                 system("cls");
                 int intentos = 3;
-                while (intentos > 0) {
+                while (intentos > 0 && intentos <5) {
                     cout << "(es 'FULL2025') Ingrese la clave de ADMIN: ";
                     cin >> claveExtra;
                     if (claveExtra == "FULL2025") {
                         menu_admin();
+                        intentos = 6;
                         aux=-1;
-                        break;
                     } else {
                         intentos--;
                         cout << "Clave incorrecta. Te quedan " << intentos << " intento(s)\n\n";
                     }
                 }
-                cout << "\nHas excedido el numero de intentos\n";
-                system("pause");
+                if (intentos <= 0){
+                    cout << "Has excedido el numero de intentos\n";
+                    system("pause");
+                }
                 break;
             }
             case 0:
@@ -178,7 +195,7 @@ void menu_e(trabajador &Emp, int &op) {
 
 void menu_admin() {
     int op=-1;
-    int idBuscar;
+    string idBuscar;
     int encontrado = 0;
     do {
         system("cls");
@@ -186,6 +203,7 @@ void menu_admin() {
         cout << "1. Registrar producto\n";
         cout << "2. Lista de productos\n";
         cout << "3. Modificar producto\n";
+        cout << "4. Ver comentarios\n";
         cout << "0. Salir\n";
         cout << "--------------------------------------"<<endl;
         cout << "Seleccionar Opcion: "; cin >> op;
@@ -246,12 +264,13 @@ void menu_admin() {
                     }
                 }
                 break;
+            case 4:
+                verComentarios();
+                break;
             case 0:
-                op = 0;
                 break;
             default:
-                system("cls");
-                cout << "OPCION INVALIDA\n";
+                cout << "\nOPCION INVALIDA\n";
                 system("pause");
         }
     } while (op != 0);
@@ -275,7 +294,7 @@ void menu_repar() {
                 } else {
                     cout << "LISTA DE PEDIDOS\n\n";
                     for (int i = 0; i < numPedidos; i++) {
-                        cout << "=========== PEDIDO #" <<i+1<< " ==========="<<endl;
+                        cout << "====================== PEDIDO #" <<i+1<< " ======================"<<endl;
                         cout << "Pedido para: "<< pedido[i].nombre <<endl;
                         cout << "Telefono: "<< pedido[i].telefono <<endl;
                         cout << "Direccion:"<<endl;
@@ -290,10 +309,11 @@ void menu_repar() {
                         cout << "Productos solicitados:\n";
                         for (int j = 0; j < 100; j++) {
                             if (pedido[i].obj[j].nom != "") {
-                                cout << "\t- " << pedido[i].obj[j].nom << "\tS/ " << pedido[i].obj[j].precio << "\n";
+                                cout << "- " << pedido[i].obj[j].nom << "\t\tCantidad: "<< pedido[i].obj[j].cantidad <<
+                                "\t Total a Pagar: S/ " << (pedido[i].obj[j].precio * pedido[i].obj[j].cantidad) << "\n";
                             }
                         }
-                        cout << "================================================\n\n";
+                        cout << "=================================================================\n\n";
                     }
                 }
                 system("pause");
