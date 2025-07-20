@@ -51,6 +51,7 @@ int main() {
                             system("cls");
                             cout << "MENU de INICIO\n\n";
                             menu_u(listaUser[p], op);
+                            aux=0;
                         } else {
                             cout << "\nInformacion Incorrecta\n" << endl;
                             cout << "1. Intentar de nuevo" << endl;
@@ -79,6 +80,7 @@ int main() {
                             system("cls");
                             cout << "MENU DE TRABAJADOR:\n\n";
                             menu_e(listaEmp[p], op);
+                            aux=0;
                         } else {
                             cout << "\nInformacion Incorrecta\n\n" << endl;
                             cout << "1. Intentar de nuevo" << endl;
@@ -130,20 +132,6 @@ int main() {
                 break;
         }
     } while (op != 0);
-
-    //testeo de informacion que almacena el programa
-    system("cls");
-    cout<<"USUARIO 0\n\n";
-    cout<<"Nombre: "<<listaUser[0].nombre<<endl;
-    cout<<"Usuario: "<<listaUser[0].usuario<<endl;
-    cout<<"Email: "<<listaUser[0].email<<endl;
-    cout<<"Numero: "<<listaUser[0].telefono<<endl;
-
-    cout<<"\nTRABAJADOR 0\n\n";
-    cout<<"Nombre: "<<listaEmp[0].nombre<<endl;
-    cout<<"Usuario: "<<listaEmp[0].usuario<<endl;
-    cout<<"Email: "<<listaEmp[0].email<<endl;
-    cout<<"Numero: "<<listaEmp[0].telefono<<endl;
 
     return 0;
 }

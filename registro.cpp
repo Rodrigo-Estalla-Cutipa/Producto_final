@@ -37,7 +37,7 @@ void leerUser(registro &listaUser, int &nu){
     cout << "Manzana: "; cin >> user.dir.manzana;
     cout << "Lote: "; cin >> user.dir.lote;
     cin.ignore();
-    cout << "Piso(Opcional): "; getline(cin, user.dir.piso);
+    cout << "Piso (Indique o escriba '-'): "; getline(cin, user.dir.piso);
     cout << "Codigo Postal: "; cin >> user.dir.cod_postal;
     cout << "\nRegistrandose.........\n";
     user.dinero = 0;
@@ -50,7 +50,7 @@ void leerEmp(trabajador &listaEmp, int &ne, int &op){
     trabajador emp;
     do {
         system("cls");
-        cout << "Ingresar Codigo de Acceso: "; cin >> aux;
+        cout << "(la clave es '912') Ingresar Codigo de Acceso: "; cin >> aux;
         system("cls");
         if (aux !=912){
             cout << "CODIGO INVALIDO"<<endl;
